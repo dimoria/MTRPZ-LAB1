@@ -30,3 +30,18 @@ def solve_equation(a, b, c):
         print(f"x1 = {x1}")
         print(f"x2 = {x2}")
 
+#Інтерактивний режим
+def interactive_mode():
+    while True:
+        a = parse_input(input("a = "))
+        if a is not None:
+            break
+    while True:
+        b = parse_input(input("b = "))
+        if b is not None:
+            break
+    while True:
+        c = parse_input(input("c = "))
+        if c is not None:
+            break
+    solve_equation(a, b, c)
