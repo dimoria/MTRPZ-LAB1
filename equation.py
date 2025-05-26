@@ -45,3 +45,31 @@ def interactive_mode():
         if c is not None:
             break
     solve_equation(a, b, c)
+
+#Неінтерактивний (файловий режим)
+def file_mode(path):
+    if not os.path.exists(path):
+        print(f"file {path} does not exist")
+        sys.exit(1)
+    try:
+        with open(path) as f:
+            line = f.readline().strip()
+            parts = line.split()
+            if len(parts) != 3:
+                raise ValueError
+            a, b, c = map(float, parts)
+            if a == 0:
+                print("Error. a cannot be 0")
+                sys.exit(1)
+            solve_equation(a, b, c)
+    except Exception:
+        print("invalid file format")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        interactive_mode()
+    elif len(sys.argv) == 2:
+        file_mode(sys.argv[1])
+    else:
+        print("Usage: python equation.py [file]")
